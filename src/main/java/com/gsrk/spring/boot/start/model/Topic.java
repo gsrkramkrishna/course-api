@@ -1,7 +1,16 @@
 package com.gsrk.spring.boot.start.model;
 
-public class Topic {
+import java.io.Serializable;
 
+public class Topic implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6003145571015995166L;
+	public Topic(){
+		
+	}
 	private int id;
 	private String name;
 	private String description;
@@ -12,7 +21,6 @@ public class Topic {
 		this.name = name;
 		this.description = description;
 	}
-
 	public int getId() {
 		return id;
 	}
