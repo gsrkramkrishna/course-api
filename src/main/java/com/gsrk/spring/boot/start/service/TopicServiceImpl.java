@@ -1,31 +1,41 @@
 package com.gsrk.spring.boot.start.service;
 
-import java.util.Arrays;
+import java.io.Serializable;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.gsrk.spring.boot.start.entity.TopicEntity;
 import com.gsrk.spring.boot.start.model.Topic;
+import com.gsrk.spring.boot.start.repository.TopicJPARepository;
 @Service
+@Transactional
 public class TopicServiceImpl implements TopicService {
+	
+	@Autowired
+	private TopicJPARepository topicRepository;
 
-	public List<Topic> getAllTopics() {
+	public List<TopicEntity> getAllTopics() {
 		// TODO Auto-generated method stub
-		return createListOfToics();
+		return topicRepository.findAll();
 	}
 	
-	private List<Topic> createListOfToics(){
-		return Arrays.asList(new Topic(123,"Java","Java Topic"),new Topic(223,"Spring","Spring Topic"),new Topic(323,"Hibernate","Hibernate Topic"));
+	public TopicEntity findTopicById(int id){
+		// TODO Auto-generated method stub
+		return topicRepository.findOne(id);
 	}
 
-	public Topic findTopicById(int id){
+	public void saveTopic(Topic topic) {
 		// TODO Auto-generated method stub
-		List<Topic> topics = createListOfToics();
-		for(Topic topic:topics){
-			if(topic.getId() == id)
-				return topic;
-		}
-		return null;
+		TopicEntity entity = new TopicEntity(); 
+		entity.setName(topic.getName());
+		entity.setDescription(topic.getDescription());
+		Serializable s = topicRepository.save(entity);
+		if(s instanceof TopicEntity)
+			entity = (TopicEntity) s;
+		System.out.println("Topic:"+entity.getId());
 	}
 
 }

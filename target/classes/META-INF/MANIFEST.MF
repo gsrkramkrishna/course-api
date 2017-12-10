@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Implementation-Title: Course Api Spring Boot Example
-Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Version: 1.0.0-SNAPSHOT
 Built-By: gsrkr
 Implementation-Vendor-Id: com.gsrk.spring.boot.start
 Build-Jdk: 1.8.0_131
