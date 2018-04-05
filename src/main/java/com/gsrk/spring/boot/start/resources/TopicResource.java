@@ -1,6 +1,7 @@
 package com.gsrk.spring.boot.start.resources;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -47,11 +48,11 @@ public class TopicResource {
 	@GET
 	@Produces("application/json")
 	public Response findTopicById(@PathParam("id") String id) {
-		TopicEntity t = null;
+		Optional<TopicEntity> t = null;
 		try {
 			int topicId = Integer.parseInt(id);
 			t = topicService.findTopicById(topicId);
-			if (t == null)
+			if (t == null || t.get()==null)
 				throw new TopicNotFoundException("Topic Not Found for the Id:" + id);
 		} catch (TopicNotFoundException tne) {
 			tne.printStackTrace();

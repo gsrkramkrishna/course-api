@@ -2,6 +2,7 @@ package com.gsrk.spring.boot.start.service;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,9 +23,9 @@ public class TopicServiceImpl implements TopicService {
 		return topicRepository.findAll();
 	}
 	
-	public TopicEntity findTopicById(int id){
+	public Optional<TopicEntity> findTopicById(int id){
 		// TODO Auto-generated method stub
-		return topicRepository.findOne(id);
+		return topicRepository.findById(id);
 	}
 
 	public void saveTopic(Topic topic) {
