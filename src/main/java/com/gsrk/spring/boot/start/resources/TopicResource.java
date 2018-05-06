@@ -12,6 +12,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.gsrk.spring.boot.start.entity.TopicEntity;
@@ -19,12 +20,21 @@ import com.gsrk.spring.boot.start.exception.TopicNotFoundException;
 import com.gsrk.spring.boot.start.model.Topic;
 import com.gsrk.spring.boot.start.service.TopicService;
 
+
+/**
+ * Properties are fetching from remote repository through Spring Cloud Config server.
+ * @author gsrkr
+ *
+ */
 @Component
 @Path("/topics")
 public class TopicResource {
 
 	@Autowired
 	private TopicService topicService;
+	
+	@Value("${com.gsrk.course.api.name}")
+	private String message;
 	
 	@Path("/all")
 	@GET
@@ -77,6 +87,14 @@ public class TopicResource {
 			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
 		}
 		return Response.status(Response.Status.CREATED).build();
+	}
+	
+	@Path("/message")
+	@GET
+	@Produces("application/json")
+	public Response sayHey(){
+		System.out.println("Message is:"+message);
+		return Response.status(Response.Status.OK).entity(message).build();
 	}
 
 }
