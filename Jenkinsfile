@@ -1,10 +1,11 @@
 pipeline {
     agent any
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
+        stages {
+		    stage('Build Info') {    
+                node {    
+                    def commit = checkout scm    
+                    echo "Latest commit id: ${commit.GIT_COMMIT}"
+                }
             }
-        }
-     }
+    }
 }
