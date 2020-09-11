@@ -4,9 +4,9 @@ pipeline {
         stage('Build') {
             steps {
                 node {
-					def commit = checkout scm    
-					echo "Latest commit id: ${commit.GIT_COMMIT}"
-				}
+		def commit = checkout scm
+		echo "Latest commit id: ${commit.GIT_COMMIT}"
+		}
             }
         }
     }
