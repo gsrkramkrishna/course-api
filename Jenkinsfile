@@ -8,8 +8,8 @@ pipeline {
                     	echo "checkout done..."
 			cd course-service
 			mvn cleani nstall
-			docker build -t gsrkramkrishna/gsrkramkrishna:course-api
-			sudo docker push gsrkramkrishna/gsrkramkrishna:course-api
+			docker build gsrkramkrishna/course-api
+			sudo docker push gsrkramkrishna/course-api + ":$BUILD_NUMBER"
                 }
             }
     }
