@@ -16,9 +16,6 @@ pipeline {
 			cd target
 			echo 'changed directory to target folder ..'
                 }
-		steps {
-			docker build gsrkramkrishna/course-api
-			sudo docker push gsrkramkrishna/course-api + ":$BUILD_NUMBER"	    
-            }
+		
     }
 }
