@@ -1,12 +1,20 @@
 pipeline {
-    agent { dockerfile true }
+    agent any
+
     stages {
         stage('Build') {
             steps {
-                node {
-				def commit = checkout scm
-				echo "Latest commit id: ${commit.GIT_COMMIT}"
-				}
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
             }
         }
     }
