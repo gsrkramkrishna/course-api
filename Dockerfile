@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine
-VOLUME /tmp
-COPY target/*.jar course-api.jar
-ENTRYPOINT ["java","-jar","/course-api.jar"]
+FROM openjdk:8
+ADD target/course-api.jar course-api.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "course-api.jar"]
