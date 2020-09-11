@@ -12,8 +12,7 @@ pipeline {
 			echo 'build done and created jar'
 			cd target
 			echo 'changed directory to target folder ..'
-			docker build gsrkramkrishna/course-api
-			sudo docker push gsrkramkrishna/course-api + ":$BUILD_NUMBER"
+			
                 }
             }
     }
