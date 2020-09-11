@@ -1,13 +1,13 @@
-pipeline {  environment {
-    registry = "https://hub.docker.com/r/gsrkramkrishna/course-api"
-    registryCredential = 'dockerhub'
-  }  agent any  stages {
-    stage('Building image') {
-      steps{
-        script {
-          docker.build registry + ":$BUILD_NUMBER"
+pipeline {
+    agent { dockerfile true }
+    stages {
+        stage('Build') {
+            steps {
+                node {
+				def commit = checkout scm
+				echo "Latest commit id: ${commit.GIT_COMMIT}"
+				}
+            }
         }
-      }
     }
-  }
 }
