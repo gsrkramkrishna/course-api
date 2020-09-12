@@ -13,9 +13,8 @@ pipeline {
 		}
 		stage('run service') {
 			steps {
-				bat label: '', script: 'cd target'
-				echo 'changed folder..'
-				bat label: '', script: 'java -jar course-api-2.0.0-SNAPSHOT'
+				bat label: '', script: '''SET %CD% \'/target\'
+				java -jar -port=8090 course-api-2.0.0-SNAPSHOT'''
 			}
 		}
 	}
