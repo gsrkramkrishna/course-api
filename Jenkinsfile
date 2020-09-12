@@ -16,14 +16,9 @@ pipeline {
 				bat label: '', script: 'cd target'
 			}
 		}
-		stage('open command prompt window') {
-			steps {
-				bat label: '', script: 'cmd'
-			}
-		}
 		stage('run service') {
 			steps {
-				bat label: '', script: 'java -jar -port=8090 course-api-2.0.0-SNAPSHOT'
+				bat label: '', script: 'java -jar course-api-2.0.0-SNAPSHOT'
 			}
 		}
 	}
