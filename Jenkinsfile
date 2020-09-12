@@ -8,7 +8,7 @@ pipeline {
 		}
 		stage('build code') {
 			steps {
-				sh 'mvn clean install'
+				bat label: '', script: 'mvn clean install'
 			}
 		}
 	}
