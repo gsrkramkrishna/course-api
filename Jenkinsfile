@@ -13,7 +13,7 @@ pipeline {
 		}
 		stage('change folder') {
 			steps {
-				bat label: '', script: 'cd workspace/course-service/target'
+				bat label: '', script: 'cd target'
 			}
 		}
 		stage('open command prompt window') {
