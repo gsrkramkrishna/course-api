@@ -11,13 +11,10 @@ pipeline {
 				bat label: '', script: 'mvn clean install'
 			}
 		}
-		stage('change folder') {
-			steps {
-				bat label: '', script: 'cd target'
-			}
-		}
 		stage('run service') {
 			steps {
+				bat label: '', script: 'cd target'
+				echo 'changed folder..'
 				bat label: '', script: 'java -jar course-api-2.0.0-SNAPSHOT'
 			}
 		}
