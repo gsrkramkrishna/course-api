@@ -13,7 +13,6 @@ pipeline {
 		}
 		stage('build image') {
 			steps {
-				echo %BUILD_NUMBER%
 				bat label: '', script: 'docker build -t gsrkramkrishna/course-api:%BUILD_NUMBER% .'
 			}
 		}
