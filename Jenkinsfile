@@ -11,10 +11,15 @@ pipeline {
 				bat label: '', script: 'mvn clean install'
 			}
 		}
-		stage('run service') {
+		stage('build image') {
 			steps {
-				bat label: '', script: '''SET %CD% \'/target\'
-				java -jar -port=8090 course-api-2.0.0-SNAPSHOT'''
+				bat label: '', script: 'docker build -t /target/course-api-2'
+			}
+		}
+		
+		stage('push image') {
+			steps {
+				bat label: '', script: 'docker push gsrkramkrishna/course-api:2'
 			}
 		}
 	}
