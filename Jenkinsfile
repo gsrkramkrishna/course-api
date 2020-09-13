@@ -13,7 +13,7 @@ pipeline {
 		}
 		stage('build image') {
 			steps {
-				bat label: '', script: 'docker build -t /target/course-api-2'
+				bat label: '', script: 'docker build .'
 			}
 		}
 		
