@@ -13,13 +13,13 @@ pipeline {
 		}
 		stage('build image') {
 			steps {
-				bat label: '', script: 'docker build .'
+				bat label: '', script: 'docker build -t gsrkramkrishna/course-api:${BUILD_NUMBER} .'
 			}
 		}
 		
 		stage('push image') {
 			steps {
-				bat label: '', script: 'docker push gsrkramkrishna/course-api:2'
+				bat label: '', script: 'docker push gsrkramkrishna/course-api:${BUILD_NUMBER}'
 			}
 		}
 	}
