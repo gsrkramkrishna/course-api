@@ -1,16 +1,15 @@
 pipeline {
-agent any parameters {
-    choice(
-      name: 'Project Name',
-      choices: ['course-api','employee-producer'],
-      description: 'Choose the service name'
-    )
-  }
-    agent any {
-		stages {
+
+    agent any parameters {
+		choice(
+		  name: 'Project Name',
+		  choices: ['course-api','employee-producer'],
+		  description: 'Choose the service name'
+		)
+       stages {
 			stage('clone code') {
 				steps {
-					git url: 'https://github.com/gsrkramkrishna/'%Project Name%
+					git url: 'https://github.com/gsrkramkrishna/course-api/'
 				}
 			}
 			stage('build code') {
