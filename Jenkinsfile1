@@ -1,6 +1,6 @@
 pipeline {
 
-    agent any parameters {
+    agent parameters {
 		choice(
 		  name: 'Project Name',
 		  choices: ['course-api','employee-producer'],
